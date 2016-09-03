@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="TruncateData.sql"
+  DTS:DTSID="{A21D00F6-D393-442F-B3DB-9367245881B3}"
+  DTS:CreationName="FILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="D:\Dev\git\Airports\C#\ETL\SQL\TruncateData.sql" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

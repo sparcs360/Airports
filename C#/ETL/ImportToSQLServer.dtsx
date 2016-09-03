@@ -1,0 +1,1653 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/6/2016 4:21:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ROGER"
+  DTS:CreatorName="ROGER\Lee"
+  DTS:DTSID="{2DD34EFD-440C-433C-B06A-0DBCE8EC4104}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1601.5"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="ImportToSQLServer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{19C7E094-F424-4FDA-AB7F-AF51A05DD6D9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import Airports"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E0451938-9485-4A9C-817F-D85CEA3EED53}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Airports"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Airports\Airport"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Airport"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Airport]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">65001</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">1000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Airports\Airport.Connections[OleDbConnection]"
+                  connectionManagerID="{05962446-4B93-47D0-88D8-E536DF5801D0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[ident]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ident"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[ident]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[ident]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="type"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[latitude_deg]"
+                      cachedDataType="decimal"
+                      cachedName="latitude_deg"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[latitude_deg]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[latitude_deg]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[longitude_deg]"
+                      cachedDataType="decimal"
+                      cachedName="longitude_deg"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[longitude_deg]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[longitude_deg]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[elevation_ft]"
+                      cachedDataType="i4"
+                      cachedName="elevation_ft"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[elevation_ft]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[elevation_ft]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[continent]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="continent"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[continent]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[continent]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[iso_country]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="iso_country"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[iso_country]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iso_country]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[iso_region]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="iso_region"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[iso_region]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iso_region]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[municipality]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="municipality"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[municipality]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[municipality]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[gps_code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="gps_code"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[gps_code]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[gps_code]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[iata_code]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="iata_code"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[iata_code]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iata_code]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[local_code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="local_code"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[local_code]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[local_code]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[home_link]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="home_link"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[home_link]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[home_link]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[wikipedia_link]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="wikipedia_link"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[wikipedia_link]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[wikipedia_link]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[keywords]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="keywords"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[keywords]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[keywords]" />
+                    <inputColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].Columns[scheduled_service_as_bool]"
+                      cachedDataType="bool"
+                      cachedName="scheduled_service_as_bool"
+                      externalMetadataColumnId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[scheduled_service]"
+                      lineageId="Package\Import Airports\Derived Column.Outputs[Derived Column Output].Columns[scheduled_service_as_bool]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[ident]"
+                      dataType="wstr"
+                      length="10"
+                      name="ident" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="15"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[latitude_deg]"
+                      dataType="numeric"
+                      name="latitude_deg"
+                      precision="28"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[longitude_deg]"
+                      dataType="numeric"
+                      name="longitude_deg"
+                      precision="28"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[elevation_ft]"
+                      dataType="i4"
+                      name="elevation_ft" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[continent]"
+                      dataType="wstr"
+                      length="2"
+                      name="continent" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[iso_country]"
+                      dataType="wstr"
+                      length="2"
+                      name="iso_country" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[iso_region]"
+                      dataType="wstr"
+                      length="7"
+                      name="iso_region" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[municipality]"
+                      dataType="wstr"
+                      length="100"
+                      name="municipality" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[scheduled_service]"
+                      dataType="bool"
+                      name="scheduled_service" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[gps_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="gps_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[iata_code]"
+                      dataType="wstr"
+                      length="3"
+                      name="iata_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[local_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="local_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[home_link]"
+                      dataType="wstr"
+                      length="128"
+                      name="home_link" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[wikipedia_link]"
+                      dataType="wstr"
+                      length="128"
+                      name="wikipedia_link" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input].ExternalColumns[keywords]"
+                      dataType="wstr"
+                      length="256"
+                      name="keywords" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Airports\Airport.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Airports\Airport.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Airports\Airport.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Airports\Airport.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Airports\Airport.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Airports\airports_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="airports_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Airports\airports_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="{AD91167E-0409-47C1-8D4E-4B18786BEE5A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[airports.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[id]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[ident]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[ident]"
+                      length="10"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[ident]"
+                      name="ident"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      length="15"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[type]"
+                      name="type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[name]"
+                      length="100"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[latitude_deg]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[latitude_deg]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[latitude_deg]"
+                      name="latitude_deg"
+                      scale="20"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[longitude_deg]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[longitude_deg]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[longitude_deg]"
+                      name="longitude_deg"
+                      scale="20"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[elevation_ft]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[elevation_ft]"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[elevation_ft]"
+                      name="elevation_ft"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[continent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[continent]"
+                      length="2"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[continent]"
+                      name="continent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iso_country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[iso_country]"
+                      length="2"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iso_country]"
+                      name="iso_country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iso_region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[iso_region]"
+                      length="7"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iso_region]"
+                      name="iso_region"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[municipality]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[municipality]"
+                      length="100"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[municipality]"
+                      name="municipality"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[scheduled_service]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[scheduled_service]"
+                      length="3"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[scheduled_service]"
+                      name="scheduled_service"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[gps_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[gps_code]"
+                      length="10"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[gps_code]"
+                      name="gps_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iata_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[iata_code]"
+                      length="3"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[iata_code]"
+                      name="iata_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[local_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[local_code]"
+                      length="10"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[local_code]"
+                      name="local_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[home_link]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[home_link]"
+                      length="128"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[home_link]"
+                      name="home_link"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[wikipedia_link]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[wikipedia_link]"
+                      length="128"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[wikipedia_link]"
+                      name="wikipedia_link"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[keywords]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[keywords]"
+                      length="256"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[keywords]"
+                      name="keywords"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      dataType="ui4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[ident]"
+                      dataType="wstr"
+                      length="10"
+                      name="ident" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="15"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[latitude_deg]"
+                      dataType="decimal"
+                      name="latitude_deg"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[longitude_deg]"
+                      dataType="decimal"
+                      name="longitude_deg"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[elevation_ft]"
+                      dataType="i4"
+                      name="elevation_ft" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[continent]"
+                      dataType="wstr"
+                      length="2"
+                      name="continent" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[iso_country]"
+                      dataType="wstr"
+                      length="2"
+                      name="iso_country" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[iso_region]"
+                      dataType="wstr"
+                      length="7"
+                      name="iso_region" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[municipality]"
+                      dataType="wstr"
+                      length="100"
+                      name="municipality" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[scheduled_service]"
+                      dataType="wstr"
+                      length="3"
+                      name="scheduled_service" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[gps_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="gps_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[iata_code]"
+                      dataType="wstr"
+                      length="3"
+                      name="iata_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[local_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="local_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[home_link]"
+                      dataType="wstr"
+                      length="128"
+                      name="home_link" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[wikipedia_link]"
+                      dataType="wstr"
+                      length="128"
+                      name="wikipedia_link" />
+                    <externalMetadataColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].ExternalColumns[keywords]"
+                      dataType="wstr"
+                      length="256"
+                      name="keywords" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Airports\airports_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Airports\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import Airports\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Airports\Derived Column.Inputs[Derived Column Input].Columns[scheduled_service]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="scheduled_service"
+                      lineageId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[scheduled_service]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Airports\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import Airports\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Airports\Derived Column.Outputs[Derived Column Output].Columns[scheduled_service_as_bool]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import Airports\Derived Column.Outputs[Derived Column Output].Columns[scheduled_service_as_bool]"
+                      name="scheduled_service_as_bool"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_BOOL)(#{Package\Import Airports\airports_csv.Outputs[Flat File Source Output].Columns[scheduled_service]} == "yes")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL)(scheduled_service == "yes")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Airports\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import Airports\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Airports\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Airports\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Airports\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Airports\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Airports.Paths[Derived Column Output]"
+              endId="Package\Import Airports\Airport.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Import Airports\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import Airports.Paths[Flat File Source Output]"
+              endId="Package\Import Airports\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Import Airports\airports_csv.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Countries"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{03427E44-A7CC-44CF-93A4-AA95A0A2E49A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Countries"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Countries\countries_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="countries_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Countries\countries_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="{5F18B8F4-4AF0-4F7C-B844-13DB0BF57B01}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[countries.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[id]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[code]"
+                      length="2"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[code]"
+                      name="code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[name]"
+                      length="50"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[continent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[continent]"
+                      length="2"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[continent]"
+                      name="continent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[wikipedia_link]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[wikipedia_link]"
+                      length="100"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[wikipedia_link]"
+                      name="wikipedia_link"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[keywords]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[keywords]"
+                      length="100"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[keywords]"
+                      name="keywords"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      dataType="ui4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[code]"
+                      dataType="wstr"
+                      length="2"
+                      name="code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="50"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[continent]"
+                      dataType="wstr"
+                      length="2"
+                      name="continent" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[wikipedia_link]"
+                      dataType="wstr"
+                      length="100"
+                      name="wikipedia_link" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].ExternalColumns[keywords]"
+                      dataType="wstr"
+                      length="100"
+                      name="keywords" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Countries\countries_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Countries\Country"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Country"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Country]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">65001</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">1000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Countries\Country.Connections[OleDbConnection]"
+                  connectionManagerID="{05962446-4B93-47D0-88D8-E536DF5801D0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].Columns[wikipedia_link]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="wikipedia_link"
+                      externalMetadataColumnId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[wikipedia_link]"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[wikipedia_link]" />
+                    <inputColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].Columns[keywords]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="keywords"
+                      externalMetadataColumnId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[keywords]"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[keywords]" />
+                    <inputColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].Columns[code]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="code"
+                      externalMetadataColumnId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[code]"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[code]" />
+                    <inputColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].Columns[continent]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="continent"
+                      externalMetadataColumnId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[continent]"
+                      lineageId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output].Columns[continent]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[code]"
+                      dataType="wstr"
+                      length="2"
+                      name="code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="50"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[continent]"
+                      dataType="wstr"
+                      length="2"
+                      name="continent" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[wikipedia_link]"
+                      dataType="wstr"
+                      length="128"
+                      name="wikipedia_link" />
+                    <externalMetadataColumn
+                      refId="Package\Import Countries\Country.Inputs[OLE DB Destination Input].ExternalColumns[keywords]"
+                      dataType="wstr"
+                      length="128"
+                      name="keywords" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Countries\Country.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Countries\Country.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Countries\Country.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Countries\Country.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Countries\Country.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Countries\Country.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Countries.Paths[Flat File Source Output]"
+              endId="Package\Import Countries\Country.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Import Countries\countries_csv.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{684CE558-363A-4B47-8D1F-BA12E1269A9C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{05962446-4B93-47D0-88D8-E536DF5801D0}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="TruncateData.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2DD27FA7-C810-453C-9A5E-DD3D10CEDF14}"
+      DTS:From="Package\Truncate Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Import Countries" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{400D02B2-669A-40BF-9B3D-2A49AB3C4CE4}"
+      DTS:From="Package\Truncate Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Import Airports" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Import Airports"
+          TopLeft="389,181" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Import Countries"
+          TopLeft="211.5,179.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Truncate Data"
+          TopLeft="292.5,70.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="347.5,112.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-56.5,67"
+              Start="0,0"
+              End="-56.5,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1955719557196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1955719557196"
+                    Point2="0,27.1955719557196"
+                    Point3="-4,27.1955719557196" />
+                  <mssgle:LineSegment
+                    End="-52.5,27.1955719557196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-52.5,27.1955719557196"
+                    Point2="-56.5,27.1955719557196"
+                    Point3="-56.5,31.1955719557196" />
+                  <mssgle:LineSegment
+                    End="-56.5,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="398.5,112.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,68.5"
+              Start="0,0"
+              End="66,61">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8044280442804" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.8044280442804"
+                    Point2="0,27.8044280442804"
+                    Point3="4,27.8044280442804" />
+                  <mssgle:LineSegment
+                    End="62,27.8044280442804" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62,27.8044280442804"
+                    Point2="66,27.8044280442804"
+                    Point3="66,31.8044280442804" />
+                  <mssgle:LineSegment
+                    End="66,61" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import Airports">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Import Airports\airports_csv"
+          TopLeft="231,85" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Import Airports\Derived Column"
+          TopLeft="224,186" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Import Airports\Airport"
+          TopLeft="242,303" />
+        <EdgeLayout
+          Id="Package\Import Airports.Paths[Derived Column Output]"
+          TopLeft="299.25,228">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Airports.Paths[Flat File Source Output]"
+          TopLeft="300,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Airports\Airport">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import Countries">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Import Countries\countries_csv"
+          TopLeft="177.5,51.5" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Import Countries\Country"
+          TopLeft="186,168" />
+        <EdgeLayout
+          Id="Package\Import Countries.Paths[Flat File Source Output]"
+          TopLeft="246.5,93.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.5"
+              Start="0,0"
+              End="0,67">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Countries\Country">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
