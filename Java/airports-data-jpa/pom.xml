@@ -10,8 +10,8 @@
 		<relativePath>../airports</relativePath>
 	</parent>
 
-	<artifactId>airports-data</artifactId>
-	<name>airports-data</name>
+	<artifactId>airports-data-jpa</artifactId>
+	<name>airports-data-jpa</name>
 	<description>Data layer for interacting with Airports relational data</description>
 
 	<dependencies>
