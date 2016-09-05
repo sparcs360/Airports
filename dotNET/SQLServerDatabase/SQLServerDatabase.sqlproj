@@ -58,10 +58,13 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="tables" />
+    <Folder Include="queries" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Airport.sql" />
     <Build Include="Tables\Country.sql" />
+    <Build Include="queries\airport_profiling.sql" />
+    <Build Include="queries\country_profiling.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Airports.publish.xml" />
