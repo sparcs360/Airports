@@ -11,7 +11,7 @@ In the instructions below, <git_root> refers to the path that you cloned this re
 
 * Visual Studio 2015 Community Edition (TODO: Link)
 * SQL Server 2016 Express (https://www.microsoft.com/en-gb/download/details.aspx?id=52679)
-..* Install SQLEXPRESS instance (not LocalDb)
+  * Install SQLEXPRESS instance (not LocalDb)
 * SQL Server Data Tools for Visual Studio 2015 (https://msdn.microsoft.com/en-us/mt186501.aspx)
 
 ## Setup
@@ -30,9 +30,11 @@ In the instructions below, <git_root> refers to the path that you cloned this re
 ## Setup
 
 * SQL Server JDBC Driver 
-..* Integrated security requires *sqljdbc_auth.dll*
-..* Location is identified by the JVM property java.library.path
-..* This argument is set in <git_root>\Java\airports\pom.xml
+  * Integrated security requires *sqljdbc_auth.dll*
+  * Location of the dll is identified by the JVM property *java.library.path*
+  * For the Maven build, this argument is set in ```<git_root>\Java\airports\pom.xml```
+  * Modify the ```<argLine>``` value (see snippet below)
+```xml
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -42,4 +44,7 @@ In the instructions below, <git_root> refers to the path that you cloned this re
             <argLine>-Djava.library.path="D:\Dev\.tools\jdbc\sqljdbc_4.0\auth\x86"</argLine>
         </configuration>
     </plugin>
-..* You'll also need to set it in Eclipse if you run JUnit tests from there.  Windows | Preferences | Java | Installed JREs | <select JRE> | Edit...
+```
+  * You'll also need to set it in Eclipse if you run JUnit tests from there.
+    * Windows | Preferences
+    * Java | Installed JREs | <select JRE> | Edit...
