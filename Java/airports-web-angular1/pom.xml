@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -11,24 +10,12 @@
 		<relativePath>../airports</relativePath>
 	</parent>
 
-	<artifactId>airports-rest-jpa</artifactId>
+	<artifactId>airports-web-angular1</artifactId>
 	<packaging>war</packaging>
-	<name>airports-rest-jpa</name>
-	<description>REST API for manipulating Airports (via JPA)</description>
+	<name>airports-web-angular1</name>
+	<description>Airports web application (Angular v1.x)</description>
 
 	<dependencies>
-
-		<!-- Local dependencies -->
-		<dependency>
-			<groupId>com.bigfish</groupId>
-			<artifactId>airports-data-jpa</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jersey</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
