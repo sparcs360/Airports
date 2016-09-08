@@ -1,0 +1,19 @@
+{
+  "name": "airports-web-angular1",
+  "description": "Airports web application (Angular v1.x)",
+  "main": "",
+  "authors": [
+    "Lee Newfeld"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.bigfish.co.uk/airports",
+  "dependencies": {
+    "angular": "angularjs#^1.5.8",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "requirejs": "^2.3.1",
+    "angular-animate": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-bootstrap": "^2.1.3"
+  }
+}

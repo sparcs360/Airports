@@ -1,10 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="favicon.ico" />
+
+  <title update-title></title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="bower/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap theme -->
+  <link href="bower/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+  <!-- angularjs -->
+  <link href="bower/angular/angular-csp.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="assets/css/style.css" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="lib/html5shiv/html5shiv.min.js"></script>
+    <script src="lib/respond/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- require -->
+  <script src="bower/requirejs/require.js" data-main="app/main.js"></script>
 </head>
-<body>
-	Hello, World!
+
+<body class="container-fluid">
+
+  <nav class="navbar navbar-inverse" ng-controller="navController">
+    <div class="container-fluid">
+    
+      <!-- Navbar (initially in collapsed state)  -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/">
+          <span>
+	        <img class="navlogo" src="assets/img/nav-logo.gif" >
+	        <span class="hidden-xs">{{title}}</span>
+          </span>
+        </a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <form class="navbar-form small-search visible-xs" role="search" action="/#/search">
+          <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Search for an airport" />
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-default" aria-label="Search">
+                <span class="glyphicon glyphicon-search"/>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <script type="text/ng-template" id="nav-item.html">
+            <span ng-if="page.name && !page.url">{{page.name}}</span>
+            <a ng-if="page.name && page.url && !(page.subPages && page.subPages.length)" href="{{page.url}}">{{page.name}}</a>
+            <a ng-if="page.name && page.url && page.subPages && page.subPages.length" href="{{page.url}}" data-toggle="dropdown" role="button" aria-expanded="false"
+            class="dropdown-toggle">{{page.name}} <span class="caret"></span>
+            </a>
+            <ul ng-if="page.subPages && page.subPages.length" class="dropdown-menu" role="menu">
+              <li ng-class="{'divider': !page.name && !page.url, 'dropdown-header': page.name && !page.url, active: isUrl(page.url)}" ng-repeat="page in page.subPages" ng-include="'nav-item.html'">
+              </li>
+            </ul>
+          </script>
+          <li ng-repeat="page in pages" ng-class="{active: isUrl(page.url)}" ng-include="'nav-item.html'" />
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hidden-xs large-search">
+            <form class="navbar-form small-search" role="search" action="/#/search">
+              <div class="input-group">
+                <input type="text" class="form-control" name="q" placeholder="Search for an airport" />
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default" aria-label="Search">
+                    <span class="glyphicon glyphicon-search"/>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </li>
+          <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></a>
+            <ul class="dropdown-menu">
+              <li><a href="/#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="/#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="ui-view-container">
+    <div ui-view>
+      <!-- default content can go here but there will be a flicker on some pages loading -->
+    </div>
+  </div>
+    
 </body>
 </html>

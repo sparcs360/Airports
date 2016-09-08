@@ -31,7 +31,7 @@ public class CountryRepositoryTest extends BaseTest {
 	 * 
 	 */
 	@Test
-	public void findAll() {
+	public void shouldFindAllCountries() {
 
 		Stream<Country> streamOfCountry = StreamSupport.stream(repository.findAll().spliterator(), false);
 		assertEquals(247, streamOfCountry.count());
@@ -41,7 +41,7 @@ public class CountryRepositoryTest extends BaseTest {
 	 * 
 	 */
 	@Test
-	public void allAirportsInGB() {
+	public void shouldFindAllAirportsInGB() {
 
 		Country gb = repository.findOne("GB");
 		assertNotNull(gb);
